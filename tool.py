@@ -33,13 +33,13 @@ def create_mr():
         sys.exit(-1)
     commit_size = len(cmd("git status -s")[1])
     if commit_size > 0:
-        commit_title = click.prompt("Input Commit Message:")
+        commit_title = click.prompt("\nInput Commit Message")
         cmd('git add .;git commit -m "{}"'.format(commit_title))
     push_size = len(cmd("git log {} ^origin".format(branch))[1])
     if push_size == 0:
         click.secho("当前没有需要push的代码!!!", fg="red")
         sys.exit(-1)
-    tmp_name = datetime.now().strftime("%Y%m%d%H%M")
+    tmp_name = datetime.now().strftime("%Y%m%d%H%M%S")
     gen_mr = "git push origin head:{} -o merge_request.target={} ".format(tmp_name, branch)
     gen_mr += "-o merge_request.create -o merge_request.remove_source_branch -f"
     [_, ret] = cmd(gen_mr)
