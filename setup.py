@@ -1,7 +1,7 @@
 import setuptools
 setuptools.setup(
     name="77tool",
-    version="1.1.2",
+    version="1.0.0",
     author="linrol",
     author_email="linrolmail@gmail.com",
     description="77 branch tool",
